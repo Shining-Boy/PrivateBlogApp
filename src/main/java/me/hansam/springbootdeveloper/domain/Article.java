@@ -1,10 +1,12 @@
 package me.hansam.springbootdeveloper.domain;
 
 
-@Entity
+@Entity // 엔티티로 지정
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED) // 접근 제어자가 protected인 기본 생성자를 코드 없이 생성
 public class Article {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // id 필드를 기본키로 지정
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키를 자동으로 1씩 증가
     @Column(name = "id", updatable = false)
     private Long id;
 
@@ -14,23 +16,23 @@ public class Article {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Builder
+    @Builder // 빌더 패턴으로 객체 생성
     public Article(String title, String content) {
         this.title = title;
         this.content = content;
     }
 
-    public Article() {}
+    // public Article() {}
 
-    public Long getId() {
-        return id;
-    }
+    // public Long getId() {
+    //     return id;
+    // }
 
-    public String getTitle() {
-        return title;
-    }
+    // public String getTitle() {
+    //     return title;
+    // }
 
-    public String getContent() {
-        return content;
-    }
+    // public String getContent() {
+    //     return content;
+    // }
 }
