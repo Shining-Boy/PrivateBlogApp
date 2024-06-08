@@ -1,5 +1,7 @@
 package me.hansam.springbootdeveloper.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -15,5 +17,10 @@ public class BlogService {
     //블로그 글 추가 메서드
     public Article save(AddArticleRequest request){ //Article 대신 AddArticleRequest로 받는 이유???
         return blogRepository.save(request.toEntity());
+    }
+
+    //블로그 글 목록 조회 메서드
+    public List<Article> findAll() {
+        return blogRepository.findAll();
     }
 }
